@@ -1,77 +1,120 @@
 ul {
+  width: 80%;
+  margin: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
+  padding: 2rem;
   list-style: none;
-  padding: 0;
+}
+
+ul li {
+  flex: 0 1 20rem; /* Grow: 0, Shrink: 1, Basis: 20rem */
+  display: flex;
 }
 
 ul li a {
-  height: 21rem;
-  width: 20rem;
-  border: 1px solid whitesmoke;
-  border-radius: 1rem;
-  margin: 0.5rem;
   display: flex;
   flex-direction: column;
+  background-color: var(--surface-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
-  color: #e72929;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  color: var(--text-color);
 }
-li a:hover {
-  opacity: 0.9;
-  cursor: pointer;
+
+ul li a:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+img {
+  width: 100%;
+  height: 14rem;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+ul li a:hover img {
+  transform: scale(1.05);
 }
 
 .content {
-  padding: 0.5rem 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   position: relative;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .favorite {
   position: absolute;
-  top: 0.5rem;
+  top: 1rem;
   right: 1rem;
   font-size: 1.2rem;
+  background: white;
+  padding: 0.3rem;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  color: var(--primary-color);
 }
 
 .favorite.not {
-  color: gray;
+  color: #ccc;
 }
 
 .stars {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .product-item-footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end; /* Align bottom */
+  margin-top: auto;
 }
 
 .origins {
-  flex: 9;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  flex: 1;
+  margin-right: 0.5rem;
 }
 
 .origins span {
-  border-radius: 2rem;
-  background-color: whitesmoke;
-  display: inline-block;
-  font-size: 0.7rem;
-  color: grey;
-  margin-right: 0.3rem;
+  font-size: 0.75rem;
+  background-color: var(--bg-color);
+  color: var(--secondary-color);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
 }
 
 .cook-time {
   font-size: 0.8rem;
-  flex: 3;
-  text-align: right;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 .price {
-  color: #414141;
-  margin-top: 0.7rem;
-  display: flex;
-  justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-top: 0.5rem;
 }

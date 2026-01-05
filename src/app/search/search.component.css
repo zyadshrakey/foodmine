@@ -1,36 +1,77 @@
-div{
+div {
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  align-items: center;
+  margin: 2rem 0;
+  position: relative;
 }
 
-div input{
-  border-radius: 10rem 0 0 10rem;
-  border: none;
-  height: 3rem;
-  width: 20rem;
-  background-color: #f1f1f1;
-  padding: 1.2rem;
+div input {
+  width: 100%;
+  max-width: 30rem;
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.5rem;
+  padding-right: 4rem; /* Space for button */
+  border: 1px solid transparent;
+  background-color: var(--surface-color);
+  box-shadow: var(--shadow-sm);
   font-size: 1rem;
-  font-weight: 500;
-  outline: none;
 }
 
-div button{
-  color: gray;
-  height: 3rem;
-  width: 5rem;
-  font-size: 1rem;
-  border-radius: 0 10rem 10rem 0;
-  border: none;
-  background-color:#e72929 ;
-  color: white;
-  opacity: .8;
-  outline: none;
+div input:focus {
+  background-color: white;
 }
 
-div button:hover{
+div button {
+  position: absolute;
+  right: calc(
+    50% - 15rem + 5px
+  ); /* Position inside input if max-width is 30rem */
+  transform: translateX(
+    100%
+  ); /* Need adjustment depending on container centering */
+  /* Better absolute positioning relative to a wrapper container would be ideal, 
+     but keeping it simple matching existing structure */
+  top: 50%;
+  transform: translateY(-50%);
+  right: auto;
+  margin-left: -3rem; /* Overlap input */
+
+  /* Resetting previous style override layout */
+  height: 2.5rem;
+  width: 3.5rem;
+  border-radius: 25%;
   opacity: 1;
-  cursor: pointer;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+}
+
+/* Let's refactor the layout slightly in CSS to make it robust */
+div {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  margin: 2rem auto;
+}
+
+div input {
+  width: 100%;
+  padding-right: 3.5rem;
+}
+
+div button {
+  position: absolute;
+  right: 0.5rem;
+  margin: 0;
+  width: 3.5rem;
+  height: 2.5rem;
+}
+
+div button:hover {
+  background: var(--primary-hover);
+  transform: translateY(0) scale(1.1);
 }

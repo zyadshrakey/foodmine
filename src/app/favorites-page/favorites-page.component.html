@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="favorites-header">
+    <h1>Your Favorites</h1>
+  </div>
+
+  <div class="empty-favorites" *ngIf="favorites.length === 0">
+    <p>No favorites yet!</p>
+    <a routerLink="/">Browse Food</a>
+  </div>
+
+  <div class="favorites-grid">
+    <div class="food-card" *ngFor="let food of favorites">
+      <div class="card-image">
+        <img [src]="food.imageUrl" [alt]="food.name" />
+        <button
+          class="favorite-btn active"
+          (click)="removeFromFavorites(food)"
+          title="Remove from favorites"
+        >
+          ❤️
+        </button>
+      </div>
+      <div class="card-content">
+        <h3>{{ food.name }}</h3>
+        <div class="card-footer">
+          <span class="price">{{ food.price | currency }}</span>
+          <a routerLink="/food/{{ food.id }}" class="btn-view">View</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

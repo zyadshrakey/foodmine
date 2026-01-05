@@ -6,7 +6,12 @@
       <span class="name">
         {{ food.name }}
       </span>
-      <span class="favorite {{ food.favorite ? '' : 'not' }}"> ❤ </span>
+      <span
+        class="favorite {{ food.favorite ? '' : 'not' }}"
+        (click)="toggleFavorite()"
+      >
+        ❤
+      </span>
     </div>
     <!-- 
       <div class="rating">

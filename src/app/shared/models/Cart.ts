@@ -1,7 +1,6 @@
 import { CartItem } from './Cartitem';
 
 export class Cart {
-  [x: string]: any;
   items: CartItem[] = [];
 
   get totalPrice(): number {
@@ -9,7 +8,14 @@ export class Cart {
     this.items.forEach((item) => {
       totalPrice += item.price;
     });
-
     return totalPrice;
+  }
+
+  get totalCount(): number {
+    let totalCount = 0;
+    this.items.forEach((item) => {
+      totalCount += item.quantity;
+    });
+    return totalCount;
   }
 }

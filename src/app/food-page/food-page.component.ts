@@ -18,7 +18,10 @@ export class FoodPageComponent implements OnInit {
     private router: Router
   ) {
     activatedRoute.params.subscribe((params) => {
-      if (params['id']) this.food = foodService.getFoodById(params['id']);
+      if (params['id'])
+        foodService.getFoodById(params['id']).subscribe((serverFood) => {
+          this.food = serverFood;
+        });
     });
   }
 
@@ -28,5 +31,9 @@ export class FoodPageComponent implements OnInit {
     this.router.navigateByUrl('/cart-page');
     this.cartService.addToCart(this.food);
     // console.log(this.cartService.getCart())
+  }
+  toggleFavorite() {
+    this.foodService.toggleFavorite(this.food.id);
+    this.food.favorite = !this.food.favorite;
   }
 }

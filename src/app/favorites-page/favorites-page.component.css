@@ -1,0 +1,115 @@
+.container {
+  /* min-height: 100vh; */
+  padding: var(--spacing-lg);
+  /* background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); */
+}
+
+.favorites-header h1 {
+  text-align: center;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.empty-favorites {
+  text-align: center;
+  margin-top: 5rem;
+  color: var(--text-muted);
+}
+
+.empty-favorites a {
+  color: var(--primary-color);
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.food-card {
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+  position: relative;
+  height: 200px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-content h3 {
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: 700;
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+.btn-view {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-view:hover {
+  background-color: var(--primary-color);
+  color: white;
+}

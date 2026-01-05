@@ -1,0 +1,81 @@
+<div class="profile-container">
+  <div class="profile-card" *ngIf="user">
+    <div class="profile-header">
+      <div class="avatar">
+        {{ user.name.charAt(0).toUpperCase() }}
+      </div>
+      <h2 *ngIf="!isEditing">{{ user.name }}</h2>
+      <div
+        *ngIf="isEditing"
+        [formGroup]="profileForm"
+        class="edit-name-container"
+      >
+        <input
+          type="text"
+          formControlName="name"
+          class="input-field"
+          placeholder="Name"
+        />
+        <div class="error" *ngIf="fc['name'].touched && fc['name'].invalid">
+          <div *ngIf="fc['name'].errors?.['required']">Name is required</div>
+          <div *ngIf="fc['name'].errors?.['minlength']">
+            Name must be at least 3 characters
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form [formGroup]="profileForm" class="profile-details">
+      <div class="info-group">
+        <span class="label">Email:</span>
+        <span class="value">{{ user.email }}</span>
+      </div>
+
+      <div class="info-group">
+        <span class="label">Address:</span>
+        <span class="value" *ngIf="!isEditing">{{ user.address }}</span>
+        <div *ngIf="isEditing" class="input-container">
+          <input
+            type="text"
+            formControlName="address"
+            class="input-field"
+            placeholder="Address"
+          />
+          <div
+            class="error"
+            *ngIf="fc['address'].touched && fc['address'].invalid"
+          >
+            <div *ngIf="fc['address'].errors?.['required']">
+              Address is required
+            </div>
+            <div *ngIf="fc['address'].errors?.['minlength']">
+              Address must be at least 5 characters
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-group">
+        <span class="label">Member Since:</span>
+        <span class="value">January 2025</span>
+      </div>
+
+      <div class="info-group">
+        <span class="label">Role:</span>
+        <span class="value">{{
+          user.isAdmin ? "Administrator" : "Customer"
+        }}</span>
+      </div>
+    </form>
+
+    <div class="actions">
+      <button class="btn-edit" *ngIf="!isEditing" (click)="toggleEdit()">
+        Edit Profile
+      </button>
+      <div class="edit-actions" *ngIf="isEditing">
+        <button class="btn-cancel" (click)="toggleEdit()">Cancel</button>
+        <button class="btn-save" (click)="saveProfile()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>

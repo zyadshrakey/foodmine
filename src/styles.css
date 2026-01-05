@@ -1,19 +1,107 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles & Design System */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap");
+
+:root {
+  /* Color Palette */
+  --primary-color: #ff4757;
+  --primary-hover: #ff6b81;
+  --secondary-color: #2f3542;
+  --secondary-hover: #57606f;
+
+  --bg-color: #f1f2f6;
+  --surface-color: #ffffff;
+  --text-color: #2f3542;
+  --text-muted: #a4b0be;
+
+  --accent-color: #2ed573;
+  --danger-color: #ff4757;
+  --warning-color: #ffa502;
+
+  /* Typography */
+  --font-family: "Outfit", sans-serif;
+  --font-size-base: 16px;
+
+  /* Spacing */
+  --container-width: 1200px;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html {
-  font-size: 16px;
+html,
+body {
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
 body {
-  margin: 0;
-  font-family: sans-serif;
-  font-size: 18px;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Layout Utilities */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Button Component Styles */
+button,
+.btn {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+/* Form Styles */
+input,
+textarea,
+select {
+  font-family: var(--font-family);
+  border: 1px solid #ced6e0;
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.1);
 }

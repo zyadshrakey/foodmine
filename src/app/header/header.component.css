@@ -1,34 +1,96 @@
 header {
-  background-color: #fff;
+  background-color: var(--surface-color);
+  box-shadow: var(--shadow-sm);
   padding: 0;
-  border: 1px solid #e72929;
-}
-
-a {
-  color: #af1313;
-}
-
-a:hover {
-  background: #e72929;
-  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .container {
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 80px; /* Reduced height for sleeker look */
+  margin: 0 auto;
 }
 
 a.logo {
-  font-weight: bold;
-  padding: 1em; /* 1em ==> 16px*/
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  letter-spacing: -0.5px;
+}
+
+a.logo:hover {
+  color: var(--primary-color);
 }
 
 nav ul {
-  list-style-type: none;
-  margin: 0;
+  display: flex;
+  gap: 2rem;
 }
+
 nav ul li a {
-  padding: 1em;
-  display: inline-block;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-lg);
+  position: relative;
+}
+
+nav ul li a:hover {
+  color: var(--primary-color);
+  background-color: rgba(255, 71, 87, 0.05);
+}
+
+/* Cart Badge Badge */
+nav ul li a span {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+}
+
+/* User Menu */
+.menu-container {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--surface-color);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0;
+  display: none;
+  min-width: 150px;
+  z-index: 1001;
+  flex-direction: column;
+}
+
+.menu-container:hover .menu {
+  display: flex;
+}
+
+.menu a {
+  padding: 0.8rem 1.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  white-space: nowrap;
+  display: block;
+  border-radius: 0;
+  transition: background-color 0.2s;
+}
+
+.menu a:hover {
+  background-color: #f8f9fa;
+  color: var(--primary-color);
 }

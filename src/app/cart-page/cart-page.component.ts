@@ -11,26 +11,18 @@ import { FoodService } from '../services/food/food.service';
 })
 export class CartPageComponent implements OnInit {
   cart!: Cart;
-  constructor(private cartServices: CartService) {
-    this.setCart;
-  }
+  constructor(private cartServices: CartService) {}
   ngOnInit(): void {
-    // console.log(this.cartServices.getCart())
-    this.setCart();
+    this.cartServices.getCartObservable().subscribe((cart) => {
+      this.cart = cart;
+    });
   }
 
   removeFromCart(cartItem: CartItem) {
     this.cartServices.removeFromCart(cartItem.food.id);
-    this.setCart();
   }
 
-  changeQuantity(cartItem: CartItem, quantityInString: string) {
-    const quantity = parseInt(quantityInString);
+  changeQuantity(cartItem: CartItem, quantity: number) {
     this.cartServices.changeQuantity(cartItem.food.id, quantity);
-    this.setCart();
-  }
-
-  setCart() {
-    this.cart = this.cartServices.getCart();
   }
 }

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="title">
+    <h1>My Orders</h1>
+  </div>
+
+  <div class="orders-list">
+    <div class="no-orders" *ngIf="orders.length === 0">
+      <p>No orders found.</p>
+      <a routerLink="/">Go to Home</a>
+    </div>
+    <div *ngFor="let order of orders" class="order-card">
+      <div class="order-header">
+        <span class="order-id">Order #{{ order.id }}</span>
+        <span class="order-date">{{ order.createdAt | date : "medium" }}</span>
+        <span class="order-status">{{ order.status }}</span>
+      </div>
+      <div class="order-items">
+        <div *ngFor="let item of order.items" class="order-item">
+          <img [src]="item.food.imageUrl" [alt]="item.food.name" />
+          <div class="item-details">
+            <span>{{ item.food.name }}</span>
+            <span>x {{ item.quantity }}</span>
+            <span>{{ item.price | currency }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="order-footer">
+        <div class="address"><strong>Address:</strong> {{ order.address }}</div>
+        <div class="total-price">
+          <strong>Total:</strong> {{ order.totalPrice | currency }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

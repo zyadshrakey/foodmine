@@ -1,0 +1,133 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <h2>Create Account</h2>
+      <p>Join Food Mine for delicious meals</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Enter your name"
+          [class.invalid]="isSubmitted && fc['name'].errors"
+        />
+        <div
+          class="error-message"
+          *ngIf="isSubmitted && fc['name'].errors?.['required']"
+        >
+          Name is required
+        </div>
+        <div
+          class="error-message"
+          *ngIf="isSubmitted && fc['name'].errors?.['minlength']"
+        >
+          Name must be at least 5 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          id="email"
+          type="text"
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.invalid]="isSubmitted && fc['email'].errors"
+        />
+        <div
+          class="error-message"
+          *ngIf="isSubmitted && fc['email'].errors?.['required']"
+        >
+          Email is required
+        </div>
+        <div
+          class="error-message"
+          *ngIf="isSubmitted && fc['email'].errors?.['email']"
+        >
+          Please enter a valid email
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Create a password"
+          [class.invalid]="isSubmitted && fc['password'].errors"
+        />
+        <div
+          class="error-message"
+          *ngIf="isSubmitted && fc['password'].errors?.['required']"
+        >
+          Password is required
+        </div>
+        <div
+          class="error-message"
+          *ngIf="isSubmitted && fc['password'].errors?.['minlength']"
+        >
+          Password must be at least 5 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          placeholder="Confirm your password"
+          [class.invalid]="isSubmitted && fc['confirmPassword'].errors"
+        />
+        <div
+          class="error-message"
+          *ngIf="isSubmitted && fc['confirmPassword'].errors?.['required']"
+        >
+          Confirm Password is required
+        </div>
+        <div
+          class="error-message"
+          *ngIf="isSubmitted && fc['confirmPassword'].errors?.['notMatch']"
+        >
+          Passwords do not match
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input
+          id="address"
+          type="text"
+          formControlName="address"
+          placeholder="Enter your delivery address"
+          [class.invalid]="isSubmitted && fc['address'].errors"
+        />
+        <div
+          class="error-message"
+          *ngIf="isSubmitted && fc['address'].errors?.['required']"
+        >
+          Address is required
+        </div>
+        <div
+          class="error-message"
+          *ngIf="isSubmitted && fc['address'].errors?.['minlength']"
+        >
+          Address must be at least 10 characters
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Register</button>
+      </div>
+    </form>
+
+    <div class="register-footer">
+      <p>Already have an account? <a routerLink="/login">Login</a></p>
+    </div>
+  </div>
+</div>
